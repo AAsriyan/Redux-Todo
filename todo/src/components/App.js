@@ -4,6 +4,8 @@ import TodoList from "./TodoList";
 import { addTodo, toggleTodo, deleteTodo } from "../actions";
 import uuidv4 from "uuidv4";
 
+import "./App.css";
+
 export class App extends Component {
   state = {
     text: ""
@@ -42,17 +44,21 @@ export class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1>App Connected</h1>
-        <form onSubmit={this.handleAddTodo}>
+      <div className="app">
+        <h1>Todo List</h1>
+        <form className="todo-form" onSubmit={this.handleAddTodo}>
           <input
+            className="add-input"
             type="text"
             name="text"
+            placeholder="Add Todo..."
             value={this.state.text}
             onChange={this.handleChanges}
             required
           />
-          <button type="submit">Submit</button>
+          <button className="hidden" type="submit">
+            Submit
+          </button>
         </form>
         <TodoList
           todos={this.props.todos}
@@ -65,7 +71,6 @@ export class App extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     todos: state.todos
   };

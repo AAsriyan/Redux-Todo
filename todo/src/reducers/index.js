@@ -22,7 +22,6 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  console.log("from reducer");
   switch (action.type) {
     case ADD_TODO:
       return {

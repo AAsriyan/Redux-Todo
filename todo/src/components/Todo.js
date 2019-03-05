@@ -1,16 +1,23 @@
 import React from "react";
 
 const Todo = props => {
-  console.log(props.todo.id);
   return (
-    <div>
+    <div className="todo">
       <div
-        style={props.todo.completed ? { textDecoration: "line-through" } : null}
+        className={
+          props.todo.completed ? "completed-todo single-todo" : "single-todo"
+        }
         onClick={() => props.toggle(props.todo.id)}
       >
-        {props.todo.value}
+        <p className="todo-text">{props.todo.value}</p>
       </div>
-      <span onClick={e => props.delete(e, props.todo.id)}>X</span>
+      <span
+        className="delete-button"
+        style={!props.todo.completed ? { display: "none" } : null}
+        onClick={e => props.delete(e, props.todo.id)}
+      >
+        X
+      </span>
     </div>
   );
 };
